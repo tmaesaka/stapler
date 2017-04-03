@@ -4,6 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"os"
+
+	"github.com/tmaesaka/stapler/config"
 )
 
 func usage() {
@@ -13,9 +15,9 @@ func usage() {
 }
 
 func main() {
-	var port int
+	config := config.NewConfig()
 
-	flag.IntVar(&port, "port", 8084, "TCP port number to listen on (default: 8084)")
+	flag.IntVar(&config.Port, "port", 8084, "TCP port number to listen on (default: 8084)")
 
-	fmt.Printf("listening on port: %d\n", port)
+	fmt.Printf("listening on port: %d\n", config.Port)
 }
