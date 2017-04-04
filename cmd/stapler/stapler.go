@@ -9,7 +9,7 @@ import (
 )
 
 func usage() {
-	fmt.Printf("staplerd | the stapler daemon\n")
+	fmt.Printf("stapler server\n")
 	fmt.Printf("  --port <num>  %s\n", flag.Lookup("port").Usage)
 	os.Exit(0)
 }
