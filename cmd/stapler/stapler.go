@@ -16,6 +16,10 @@ func usage() {
 	os.Exit(0)
 }
 
+func init() {
+	flag.Usage = usage
+}
+
 func main() {
 	config := config.NewConfig()
 
