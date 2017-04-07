@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/tmaesaka/stapler/app"
 	"github.com/tmaesaka/stapler/config"
 )
 
@@ -31,5 +32,8 @@ func main() {
 		usage()
 	}
 
-	fmt.Printf("listening on port: %d\n", config.Port)
+	if err := app.Run(config); err != nil {
+		fmt.Printf("Failed to start stapler")
+		os.Exit(1)
+	}
 }
