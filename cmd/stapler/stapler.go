@@ -28,7 +28,8 @@ func main() {
 	flag.IntVar(&config.Port, "port", 8084, "TCP port number to listen on (default: 8084)")
 	flag.Parse()
 
-	if len(config.MapPath) == 0 {
+	if err := config.Validate(); err != nil {
+		fmt.Printf("%s\n\n", err.Error())
 		usage()
 	}
 
