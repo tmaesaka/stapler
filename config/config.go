@@ -2,6 +2,7 @@ package config
 
 import (
 	"errors"
+	"os"
 )
 
 // Config holds the stapler server settings.
@@ -18,6 +19,10 @@ func NewConfig() *Config {
 func (cfg *Config) Validate() error {
 	if len(cfg.MapPath) == 0 {
 		return errors.New("--map option is required")
+	}
+
+	if _, err := os.Stat(cfg.MapPath); os.IsNotExist(err) {
+		return errors.New(err.Error())
 	}
 
 	return nil
